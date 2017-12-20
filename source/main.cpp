@@ -1,14 +1,16 @@
 #include <iostream>
-#include "Bin.h"
 
 using namespace std;
 
+#include "Bin.h"
+#include "Parser.h"
 
 
 int main() {
 
-    cout<<"Hello World"<<endl;
-    Bin bin(100,1);
+    Parser parser;
+    parser.readFile("exemples/exemple100.txt");
+    Bin bin(parser.getBinSize(),1);
     bin.addAnObject(50);
     bin.print();
     return 0;
