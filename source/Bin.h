@@ -11,10 +11,11 @@ private:
 
 public:
     Bin(int size,int id);
-    int getAvailableSize();
+    bool operator<(const Bin bin);
+    int getAvailableSize() const ;
     bool addAnObject(int sizeOfObject);
-    int getID();
-    void print();
+    int getID()const;
+    void print()const;
 
 };
 

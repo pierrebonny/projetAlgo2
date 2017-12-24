@@ -7,15 +7,16 @@
 using std::queue;
 using std::list;
 
+
 class Algorithme {
 private:
-    queue<int> valuesQueue;
-    list<Bin> listOfBin;
     int id = 1;
+protected:
+    queue<int> valuesQueue;
 public:
-    Algorithme(queue<int> valuesQueue, int binSize);
+    Algorithme(queue<int> valuesQueue);
     virtual void compute() = 0;
 };
 
 
-#endif //PROJET_ALGORITHME_H
+#endif

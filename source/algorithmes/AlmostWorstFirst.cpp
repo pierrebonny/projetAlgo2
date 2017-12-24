@@ -1,6 +1,6 @@
 #include "AlmostWorstFirst.h"
 
-AlmostWorstFirst::AlmostWorstFirst(const queue<int> &valuesQueue, int binSize) : Algorithme(valuesQueue, binSize) {
+AlmostWorstFirst::AlmostWorstFirst(const queue<int> &valuesQueue) : Algorithme(valuesQueue) {
 
 }
 

@@ -17,7 +17,7 @@ class Parser {
     public:
         void readFile(string filename);
         int getBinSize();
-        queue<int> getQueue();
+        queue<int> & getQueue();
 
     private:
         queue<int> valueQueue;

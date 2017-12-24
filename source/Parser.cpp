@@ -29,6 +29,6 @@ void Parser::parse(ifstream& is) {
     valueQueue.push(std::stoi(line));
 }
 
-queue<int> Parser::getQueue() {
+queue<int> & Parser::getQueue() {
     return valueQueue;
 }

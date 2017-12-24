@@ -6,7 +6,7 @@
 
 class AlmostWorstFirst : public Algorithme {
 public:
-    AlmostWorstFirst(const queue<int> &valuesQueue, int binSize);
+    AlmostWorstFirst(const queue<int> &valuesQueue);
     virtual void compute();
 
 };
