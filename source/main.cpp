@@ -10,9 +10,9 @@ using namespace std;
 int main() {
 
     Parser parser;
-    parser.readFile("exemples/exemple100.txt");
+    parser.readFile("exemples/exemple20.txt");
     BestFit bestFit(parser.getQueue(),parser.getBinSize());
-    bestFit.compute();
+    /*bestFit.compute();
     bestFit.dispResult();
 
     NextFit nextFit(parser.getQueue(),parser.getBinSize());
@@ -23,6 +23,7 @@ int main() {
     firstFit.compute();
     firstFit.dispResult();
 
-    std::list<int> liste;
+    std::list<int> liste;*/
+    bestFit.compute2();
     return 0;
 }

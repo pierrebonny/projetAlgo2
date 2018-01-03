@@ -16,6 +16,7 @@ public:
     bool addAnObject(int sizeOfObject);
     int getID()const;
     void print()const;
+    int compareTo(Bin& bin)const;
 
 };
 

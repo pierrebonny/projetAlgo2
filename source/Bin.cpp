@@ -32,3 +32,12 @@ bool Bin::operator<(const Bin bin) {
 int Bin::getID() const {
     return id;
 }
+
+int Bin::compareTo(Bin &bin) const {
+    if(getAvailableSize() == bin.getAvailableSize()){
+        return 0;
+    }
+    else{
+        return getAvailableSize() - bin.getAvailableSize();
+    }
+}

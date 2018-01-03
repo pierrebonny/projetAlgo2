@@ -6,6 +6,7 @@ BestFit::BestFit(queue<int> &valuesQueue, int binSize) : Algorithme(valuesQueue)
     this->bin_size = binSize;
     Bin bin1 = {binSize,1};
     binsQueue.push_back(bin1);
+    binsTree = {};
 }
 
 Bin& BestFit::nextFillableBin(int value) {
@@ -53,6 +54,25 @@ void BestFit::dispResult() {
     for(int i = 0; i < binsQueue.size();i++){
         queue1.back().print();
         queue1.pop_back();
+    }
+}
+
+void BestFit::compute2() {
+    binsTree.insert(binsQueue.at(0));
+    int value;
+    Bin bestBin(0,0);
+    int size = valuesQueue.size();
+    for(int i = 0; i < size; i++){
+        value = valuesQueue.front();
+        valuesQueue.pop();
+        bestBin = binsTree.getBest(value);
+        if(bestBin.getAvailableSize() != 0){
+            binsTree.remove(bestBin.getAvailableSize());
+        } else{
+            bestBin = {bin_size,++id};
+        }
+        bestBin.addAnObject(value);
+        binsTree.insert(bestBin);
     }
 }
 
