@@ -14,6 +14,7 @@ public:
     void insert(Bin& bin);
     void remove(int neededSpace);
     Bin getBest(int neededSpace);
+    BinaryNode* findMax();
     void display();
     BinaryNode* getRoot();
 private:

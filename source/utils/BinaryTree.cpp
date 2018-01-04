@@ -5,18 +5,18 @@ void BinaryTree::insert(Bin& bin) {
     root = insert(bin,root);
 }
 
-BinaryNode* BinaryTree::insert(Bin bin, BinaryNode* root) {
+BinaryNode* BinaryTree::insert(Bin bin, BinaryNode* node) {
     bin.print();
-    if (root == nullptr){
+    if (node == nullptr){
         return new BinaryNode(bin);
     }
-    if (bin.getAvailableSize() > root->getBin().getAvailableSize()){
-        root->setRight(insert(bin,root->getRight()));
+    if (bin.getAvailableSize() > node->getBin().getAvailableSize()){
+        node->setRight(insert(bin,node->getRight()));
     }
-    else if (bin.getAvailableSize() < root->getBin().getAvailableSize()){
-        root->setLeft(insert(bin,root->getLeft()));
+    else if (bin.getAvailableSize() < node->getBin().getAvailableSize()){
+        node->setLeft(insert(bin,node->getLeft()));
     }
-    return root;
+    return node;
 }
 
 BinaryNode* BinaryTree::remove(int x, BinaryNode *node) {
@@ -100,6 +100,10 @@ BinaryNode * BinaryTree::findMax(BinaryNode *node) {
             node = node->getRight();
     }
     return node;
+}
+
+BinaryNode* BinaryTree::findMax() {
+    return findMax(root);
 }
 
 
