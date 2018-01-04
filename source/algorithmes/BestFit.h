@@ -4,7 +4,6 @@
 
 #include "Algorithme.h"
 #include "../utils/BinaryTree.h"
-#include "../utils/BST.h"
 
 using std::priority_queue;
 using std::vector;
@@ -20,7 +19,6 @@ public:
 
 private:
     BinaryTree binsTree;
-    BST bst;
     int bin_size;
     int id = 1;
     std::vector<Bin> fullBins;

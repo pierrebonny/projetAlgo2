@@ -10,7 +10,7 @@ using namespace std;
 int main() {
 
     Parser parser;
-    parser.readFile("exemples/exemple20.txt");
+    parser.readFile("exemples/exemple100.txt");
     BestFit bestFit(parser.getQueue(),parser.getBinSize());
     /*bestFit.compute();
     bestFit.dispResult();

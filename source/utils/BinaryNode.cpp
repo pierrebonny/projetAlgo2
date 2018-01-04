@@ -1,6 +1,6 @@
 #include "BinaryNode.h"
 
-BinaryNode::BinaryNode(Bin &bin):nodeBin(bin) {
+BinaryNode::BinaryNode(Bin &bin):nodeBin(bin),left(nullptr),right(nullptr) {
 }
 
 Bin& BinaryNode::getBin() {

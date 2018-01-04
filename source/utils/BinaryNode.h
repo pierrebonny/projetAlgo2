@@ -4,20 +4,20 @@
 #include "../Bin.h"
 
 class BinaryNode {
-    public:
-        BinaryNode(Bin& bin);
-        Bin& getBin();
-        BinaryNode* getLeft();
-        BinaryNode* getRight();
-        void setRight(BinaryNode* newRight);
-        void setLeft(BinaryNode* newLeft);
-        void setBin(Bin& bin);
-        BinaryNode* remove(int value,BinaryNode* parent);
-        int minValue();
-    private:
-        Bin nodeBin;
-        BinaryNode* left;
-        BinaryNode* right;
+public:
+    BinaryNode(Bin& bin);
+    Bin& getBin();
+    BinaryNode* getLeft();
+    BinaryNode* getRight();
+    void setRight(BinaryNode* newRight);
+    void setLeft(BinaryNode* newLeft);
+    void setBin(Bin& bin);
+    BinaryNode* remove(int value,BinaryNode* parent);
+    int minValue();
+private:
+    Bin nodeBin;
+    BinaryNode* left;
+    BinaryNode* right;
 };
 
 

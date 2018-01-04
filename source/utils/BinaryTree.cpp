@@ -1,14 +1,14 @@
 #include <cstring>
 #include "BinaryTree.h"
 
-void BinaryTree::insert(Bin bin) {
+void BinaryTree::insert(Bin& bin) {
     root = insert(bin,root);
 }
 
 BinaryNode* BinaryTree::insert(Bin bin, BinaryNode* root) {
     bin.print();
     if (root == nullptr){
-        root = new BinaryNode(bin);
+        return new BinaryNode(bin);
     }
     if (bin.getAvailableSize() > root->getBin().getAvailableSize()){
         root->setRight(insert(bin,root->getRight()));
@@ -19,29 +19,25 @@ BinaryNode* BinaryTree::insert(Bin bin, BinaryNode* root) {
     return root;
 }
 
-BinaryNode* BinaryTree::remove(int x, BinaryNode *root) {
-    if (root == nullptr){
-        delete(root);
-        return nullptr;
+BinaryNode* BinaryTree::remove(int x, BinaryNode *node) {
+    if(node == nullptr){
+        // TODO : delete the removed node
+        return node;
     }
-
-    if (x > root->getBin().getAvailableSize()){
-        return remove(x,root->getRight());
+    int compareResult = x-  node->getBin().getAvailableSize();
+    if(compareResult < 0){
+        BinaryNode * removed = remove(x,node->getLeft());
+        node->setLeft(removed);
+    }else if(compareResult > 0){
+        BinaryNode* removed = remove(x,node->getRight());
+        node->setRight(removed);
+    }else if (node->getLeft()!= nullptr && node->getRight() != nullptr) {
+        Bin bin =findMax(node)->getBin();
+        node->setLeft(remove(bin.getAvailableSize(),node->getLeft()));
+    } else{
+        return (node->getLeft() != nullptr ) ? node->getLeft() : node->getRight();
     }
-    else if (x < root->getBin().getAvailableSize()){
-        return remove(x,root->getLeft());
-    }
-    else if (root->getLeft() == nullptr){
-        return (root->getRight());
-    }
-
-    else if (root->getRight() == nullptr){
-        return root->getLeft();
-    }
-    else {
-        root->setLeft(removeMax(root->getLeft(),root));
-        return root;
-    }
+    return node;
 }
 
 BinaryNode* BinaryTree::removeMax(BinaryNode* t, BinaryNode* r){
@@ -53,8 +49,9 @@ BinaryNode* BinaryTree::removeMax(BinaryNode* t, BinaryNode* r){
     return t;
 }
 
+
 void BinaryTree::remove(int neededSpace) {
-    remove2(neededSpace);
+    root = remove(neededSpace,root);
 }
 
 BinaryNode* BinaryTree::getBest(BinaryNode* root, int neededSpace) {
@@ -92,28 +89,17 @@ BinaryNode* BinaryTree::getRoot() {
     return root;
 }
 
-bool BinaryTree::remove2(int value) {
-    if (root == nullptr)
-        return false;
-    else {
-        if (root->getBin().getAvailableSize() == value) {
-            BinaryNode* r = root;
-            BinaryNode* removedNode = root->remove(value, r);
-            root = r;
-            if (removedNode != nullptr) {
-                delete removedNode;
-                return true;
-            } else
-                return false;
-        } else {
-            BinaryNode* removedNode = root->remove(value, nullptr);
-            if (removedNode != nullptr) {
-                delete removedNode;
-                return true;
-            } else
-                return false;
-        }
-
-    }
+void BinaryTree::display() {
+    cout << this->root<<endl;
 
 }
+
+BinaryNode * BinaryTree::findMax(BinaryNode *node) {
+    if(node != nullptr){
+        while( node->getRight() != nullptr )
+            node = node->getRight();
+    }
+    return node;
+}
+
+
