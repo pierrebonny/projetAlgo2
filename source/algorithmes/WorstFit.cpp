@@ -15,12 +15,11 @@ void WorstFit::compute() {
         if(mostEmptyBin.getAvailableSize() < value){
             mostEmptyBin = Bin(bin_size,++id);
         }else{
-            binsTree.remove(mostEmptyBin.getAvailableSize());
+            binsTree.deleteNode(mostEmptyBin.getAvailableSize());
             mostEmptyBin.addAnObject(value);
         }
         binsTree.insert(mostEmptyBin);
     }
-
 }
 
 

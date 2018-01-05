@@ -12,12 +12,13 @@ using std::endl;
 class BinaryTree {
 public:
     void insert(Bin& bin);
-    void remove(int neededSpace);
     Bin getBest(int neededSpace);
+    ~BinaryTree();
     BinaryNode* findMax();
     void display();
     BinaryNode* getRoot();
     void deleteNode(int key);
+
 private:
     BinaryNode* findMax(BinaryNode* node);
     BinaryNode* findMin(BinaryNode* node);
@@ -25,9 +26,10 @@ private:
     BinaryNode* getBest(BinaryNode* root, int neededSpace);
     BinaryNode* insert(Bin& bin, BinaryNode* root);
     BinaryNode* root = nullptr;
-    BinaryNode* remove(int x, BinaryNode *root);
     BinaryNode* removeMax(BinaryNode* t,BinaryNode* r);
     BinaryNode* deleteNode(BinaryNode* root, int key);
+
+    void deleteObject(BinaryNode *node);
 };
 
 

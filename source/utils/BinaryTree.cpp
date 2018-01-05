@@ -7,35 +7,13 @@ void BinaryTree::insert(Bin& bin) {
 
 BinaryNode* BinaryTree::insert(Bin& bin, BinaryNode* node) {
     if (node == nullptr){
-        node = new BinaryNode(bin);
-        return node;
+        return  new BinaryNode(bin);
     }
     if (bin.getAvailableSize() >= node->getBin().getAvailableSize()){
         node->setRight(insert(bin,node->getRight()));
     }
     else if (bin.getAvailableSize() < node->getBin().getAvailableSize()){
         node->setLeft(insert(bin,node->getLeft()));
-    }
-    return node;
-}
-
-BinaryNode* BinaryTree::remove(int x, BinaryNode *node) {
-    if(node == nullptr){
-        // TODO : delete the removed node
-        return node;
-    }
-    int compareResult = x - node->getBin().getAvailableSize();
-    if(compareResult < 0){
-        BinaryNode * removed = remove(x,node->getLeft());
-        node->setLeft(removed);
-    }else if(compareResult > 0){
-        BinaryNode* removed = remove(x,node->getRight());
-        node->setRight(removed);
-    }else if (node->getLeft()!= nullptr && node->getRight() != nullptr) {
-        Bin bin =findMax(node)->getBin();
-        node->setLeft(remove(bin.getAvailableSize(),node->getLeft()));
-    } else{
-        return (node->getLeft() != nullptr ) ? node->getLeft() : node->getRight();
     }
     return node;
 }
@@ -47,11 +25,6 @@ BinaryNode* BinaryTree::removeMax(BinaryNode* t, BinaryNode* r){
     }
     t->setRight(removeMax(t->getRight(),r));
     return t;
-}
-
-
-void BinaryTree::remove(int neededSpace) {
-    root = remove(neededSpace,root);
 }
 
 BinaryNode* BinaryTree::getBest(BinaryNode* root, int neededSpace) {
@@ -90,7 +63,6 @@ BinaryNode* BinaryTree::getRoot() {
 }
 
 void BinaryTree::display() {
-    //cout << this->root<<endl;
     display(root);
 
 }
@@ -180,4 +152,20 @@ void BinaryTree::display(BinaryNode *node) {
             display(node->getLeft());
         }
     }
+}
+void BinaryTree::deleteObject(BinaryNode *node){
+    if(node == nullptr){
+        return;
+    }else{
+        if(node->getLeft() != nullptr){
+            deleteObject(node->getLeft());
+        }
+        if(node->getRight() != nullptr){
+            deleteObject(node->getRight());
+        }
+        delete node;
+    }
+}
+BinaryTree::~BinaryTree() {
+    deleteObject(root);
 }
