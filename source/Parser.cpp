@@ -1,13 +1,15 @@
 #include "Parser.h"
 
-void Parser::readFile(string filename) {
+bool Parser::readFile(string filename) {
     string s;
     ifstream is{filename};
+    if(!is.good()) return false;
     getline(is,s);
     is >> bin_size;
     getline(is,s);
     getline(is,s);
     parse(is);
+    return true;
 }
 
 int Parser::getBinSize() {

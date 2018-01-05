@@ -8,10 +8,18 @@ using namespace std;
 #include "algorithmes/FirstFit.h"
 #include "algorithmes/WorstFit.h"
 
-int main() {
-
+int main (int argc, char *argv[]){
+    string filename;
+    if(argc > 1){
+        filename = argv[1];
+    }else{
+        filename  = "exemples/exemple100.txt";
+    }
     Parser parser;
-    parser.readFile("exemples/exemple20.txt");
+    if(!parser.readFile(filename)){
+        cerr << "Impossible de lire le fichier " << filename<< endl;
+        return EXIT_FAILURE;
+    }
     cout<<"BEST FIT"<< endl;
     BestFit bestFit(parser.getQueue(),parser.getBinSize());
     bestFit.compute();
@@ -24,9 +32,9 @@ int main() {
     FirstFit firstFit(parser.getQueue(),parser.getBinSize());
     firstFit.compute();
     firstFit.dispResult();
-
-    /*WorstFit worstFit(parser.getQueue(),parser.getBinSize());
+    cout<<"WORST FIT"<< endl;
+    WorstFit worstFit(parser.getQueue(),parser.getBinSize());
     worstFit.compute();
-    worstFit.dispResult();*/
+    worstFit.dispResult();
     return 0;
 }

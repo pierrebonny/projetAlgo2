@@ -15,7 +15,7 @@ using std::endl;
 class Parser {
 
     public:
-        void readFile(string filename);
+    bool readFile(string filename);
         int getBinSize();
         queue<int> & getQueue();
 
