@@ -3,8 +3,8 @@
 
 #include <cstdio>
 #include "BinaryNode.h"
-#include <iostream>
 #include <string>
+#include "iostream"
 
 using std::cout;
 using std::endl;
@@ -17,14 +17,17 @@ public:
     BinaryNode* findMax();
     void display();
     BinaryNode* getRoot();
+    void deleteNode(int key);
 private:
-    BinaryNode* findMax(BinaryNode * node);
+    BinaryNode* findMax(BinaryNode* node);
+    BinaryNode* findMin(BinaryNode* node);
     void display(BinaryNode* node);
     BinaryNode* getBest(BinaryNode* root, int neededSpace);
-    BinaryNode* insert(Bin bin,BinaryNode* root);
+    BinaryNode* insert(Bin& bin, BinaryNode* root);
     BinaryNode* root = nullptr;
     BinaryNode* remove(int x, BinaryNode *root);
     BinaryNode* removeMax(BinaryNode* t,BinaryNode* r);
+    BinaryNode* deleteNode(BinaryNode* root, int key);
 };
 
 

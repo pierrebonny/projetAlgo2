@@ -17,7 +17,6 @@ public:
     int getID()const;
     void print()const;
     int compareTo(Bin& bin)const;
-
 };
 
 

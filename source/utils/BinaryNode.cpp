@@ -1,4 +1,5 @@
 #include "BinaryNode.h"
+#include "iostream"
 
 BinaryNode::BinaryNode(Bin &bin):nodeBin(bin),left(nullptr),right(nullptr) {
 }
@@ -15,13 +16,13 @@ BinaryNode *BinaryNode::getRight() {
     return right;
 }
 
-void BinaryNode::setLeft(BinaryNode * newLeft) {
-    delete(left);
+void BinaryNode::setLeft(BinaryNode* newLeft) {
+    //delete(left);
     left = newLeft;
 }
 
 void BinaryNode::setRight(BinaryNode * newRight) {
-    delete(right);
+    //delete(right);
     right = newRight;
 }
 
