@@ -21,7 +21,7 @@ public:
 private:
     BinaryTree binsTree;
     int bin_size;
-    int id = 1;
+    int id;
     std::vector<Bin> fullBins;
     std::vector<Bin> binsQueue;
     Bin& nextFillableBin(int value);

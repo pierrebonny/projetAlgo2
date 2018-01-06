@@ -2,8 +2,8 @@
 #include "WorstFit.h"
 using std::vector;
 
-WorstFit::WorstFit(queue<int> &valuesQueue, int binSize): Algorithme(valuesQueue),bin_size(binSize),binsTree() {
-    Bin bin = {binSize, 1};
+WorstFit::WorstFit(queue<int> &valuesQueue, int binSize): Algorithme(valuesQueue),bin_size(binSize),binsTree(), id(0) {
+    Bin bin = {binSize, id};
     binsTree.insert(bin);
 }
 
