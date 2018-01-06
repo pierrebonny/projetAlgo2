@@ -16,8 +16,8 @@ void WorstFit::compute() {
             mostEmptyBin = Bin(bin_size,++id);
         }else{
             binsTree.deleteNode(mostEmptyBin.getAvailableSize());
-            mostEmptyBin.addAnObject(value);
         }
+        mostEmptyBin.addAnObject(value);
         binsTree.insert(mostEmptyBin);
     }
 }
