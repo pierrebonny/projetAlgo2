@@ -90,6 +90,7 @@ BinaryNode *BinaryTree::findMin(BinaryNode* node) {
 
 BinaryNode* BinaryTree::deleteNode(BinaryNode* root, int key) {
     if (root == nullptr){
+
         return root;
     }
     // If the key to be deleted is smaller than the root's key,
@@ -108,9 +109,12 @@ BinaryNode* BinaryTree::deleteNode(BinaryNode* root, int key) {
         // to be deleted
     else
     {
+
         // node with only one child or no child
         if (root->getLeft() == nullptr)
         {
+
+
             BinaryNode* temp = root->getRight();
             delete(root);
             return temp;
@@ -136,6 +140,7 @@ BinaryNode* BinaryTree::deleteNode(BinaryNode* root, int key) {
 }
 
 void BinaryTree::deleteNode(int key) {
+
     root = deleteNode(root,key);
 }
 

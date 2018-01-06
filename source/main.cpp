@@ -8,6 +8,7 @@ using namespace std;
 #include "algorithmes/NextFit.h"
 #include "algorithmes/FirstFit.h"
 #include "algorithmes/WorstFit.h"
+#include "algorithmes/AlmostWorstFirst.h"
 
 int main (int argc, char *argv[]){
     string filename;
@@ -38,5 +39,21 @@ int main (int argc, char *argv[]){
     WorstFit worstFit(parser.getQueue(),parser.getBinSize());
     worstFit.compute();
     worstFit.dispResult();
+    cout<<""<<endl;
+    cout<<"ALMOST WORST FIT"<<endl;
+    AlmostWorstFirst almostWorstFirst(parser.getQueue(), parser.getBinSize());
+    almostWorstFirst.compute();
+    almostWorstFirst.dispResult();
+
+    srand(time(0));
+    cout<<"entrez la contenance maximum des boites"<<endl;
+    int b_size;
+    cin>>b_size;
+    cout<<"entrez le nombre de valeurs que vous souhaitez générer"<<endl;
+    int boxNumbers;
+    cin>>boxNumbers;
+    for(int i = 0; i < boxNumbers;i++){
+        valuesQueue.push(rand()%b_size);
+    }
     return 0;
 }
