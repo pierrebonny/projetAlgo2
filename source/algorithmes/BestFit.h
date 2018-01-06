@@ -17,6 +17,7 @@ public:
 
 private:
     BinaryTree binsTree;
+    vector<Bin> fullBins;
     int bin_size;
     int id = 1;
 

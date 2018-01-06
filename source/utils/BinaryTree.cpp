@@ -9,10 +9,10 @@ BinaryNode* BinaryTree::insert(Bin& bin, BinaryNode* node) {
     if (node == nullptr){
         return  new BinaryNode(bin);
     }
-    if (bin.getAvailableSize() >= node->getBin().getAvailableSize()){
+    if (bin.getAvailableSize() > node->getBin().getAvailableSize()){
         node->setRight(insert(bin,node->getRight()));
     }
-    else if (bin.getAvailableSize() < node->getBin().getAvailableSize()){
+    else if (bin.getAvailableSize() <= node->getBin().getAvailableSize()){
         node->setLeft(insert(bin,node->getLeft()));
     }
     return node;
@@ -88,13 +88,10 @@ BinaryNode *BinaryTree::findMin(BinaryNode* node) {
     }
 }
 
-BinaryNode* BinaryTree::deleteNode(BinaryNode* root, int key)
-{
-        // base case
+BinaryNode* BinaryTree::deleteNode(BinaryNode* root, int key) {
     if (root == nullptr){
         return root;
     }
-
     // If the key to be deleted is smaller than the root's key,
     // then it lies in left subtree
     if (key < root->getBin().getAvailableSize()){
@@ -107,7 +104,7 @@ BinaryNode* BinaryTree::deleteNode(BinaryNode* root, int key)
         root->setRight(deleteNode(root->getRight(), key));
     }
 
-        // if key is same as root's key, then This is the node
+        // if key is same as root's key, then this is the node
         // to be deleted
     else
     {

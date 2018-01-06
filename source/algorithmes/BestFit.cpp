@@ -8,6 +8,9 @@ BestFit::BestFit(queue<int> &valuesQueue, int binSize) : Algorithme(valuesQueue)
 }
 
 void BestFit::dispResult() {
+    for(Bin bin : fullBins){
+        bin.print();
+    }
     binsTree.display();
 }
 
@@ -24,7 +27,11 @@ void BestFit::compute() {
             bestBin = {bin_size,++id};
         }
         bestBin.addAnObject(value);
-        binsTree.insert(bestBin);
+        if(bestBin.getAvailableSize() == 0){
+            fullBins.push_back(bestBin);
+        } else{
+            binsTree.insert(bestBin);
+        }
     }
 }
 
