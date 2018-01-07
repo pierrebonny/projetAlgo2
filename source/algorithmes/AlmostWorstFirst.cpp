@@ -3,6 +3,7 @@
 AlmostWorstFirst::AlmostWorstFirst(queue<int> &valuesQueue, int binSize): Algorithme(valuesQueue),bin_size(binSize),binsTree() {
     Bin bin = {binSize, 1};
     binsTree.insert(bin);
+    box_number++;
 }
 
 void AlmostWorstFirst::compute() {
@@ -12,6 +13,7 @@ void AlmostWorstFirst::compute() {
         Bin mostEmptyBin = binsTree.findMax()->getBin();
         if (mostEmptyBin.getAvailableSize() < value) {
             mostEmptyBin = Bin(bin_size, ++id);
+            box_number++;
             mostEmptyBin.addAnObject(value);
 
         }
@@ -34,12 +36,34 @@ void AlmostWorstFirst::compute() {
                 mostEmptyBin.addAnObject(value);
             }
         }
-        binsTree.insert(mostEmptyBin);
+        if(mostEmptyBin.getAvailableSize() == 0){
+            fullBins.push_back(mostEmptyBin);
+        } else{
+            binsTree.insert(mostEmptyBin);
+        }
     }
 
 }
 
 
 void AlmostWorstFirst::dispResult() {
+    for(Bin bin : fullBins){
+        bin.print();
+    }
     binsTree.display();
 }
+
+void AlmostWorstFirst::boxNumber() {
+    cout<<"Il y a "<<box_number<<" boites"<<endl;
+}
+
+void AlmostWorstFirst::averageBoxFilling() {
+    double average = 0.;
+    average += binsTree.somme(bin_size);
+    for(Bin bin : fullBins){
+        average += bin_size;
+    }
+    average = floor((average/box_number)*100 + 0.5)/100;
+    cout<<"Le taux de remplissage moyen est de "<<average<<"%"<<endl;
+}
+

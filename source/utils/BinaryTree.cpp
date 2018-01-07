@@ -1,4 +1,5 @@
 #include <cstring>
+#include <cmath>
 #include "BinaryTree.h"
 
 void BinaryTree::insert(Bin& bin) {
@@ -170,4 +171,16 @@ void BinaryTree::deleteObject(BinaryNode *node){
 }
 BinaryTree::~BinaryTree() {
     deleteObject(root);
+}
+
+int BinaryTree::somme(int bin_size) {
+    return somme(root,bin_size);
+}
+
+int BinaryTree::somme(BinaryNode *node, int bin_size) {
+    if(node != nullptr){
+        return ((bin_size - node->getBin().getAvailableSize()) + somme(node->getRight(),bin_size) + somme(node->getLeft(),bin_size));
+    } else{
+        return 0;
+    }
 }

@@ -4,6 +4,7 @@
 
 #include "Algorithme.h"
 #include "../utils/BinaryTree.h"
+#include <cmath>
 
 using std::priority_queue;
 using std::vector;
@@ -14,10 +15,13 @@ public:
     BestFit(queue<int> &valuesQueue, int binSize);
     virtual void compute();
     void dispResult();
+    virtual void boxNumber();
+    virtual void averageBoxFilling();
 
 private:
+    vector<int> boxFilling;
+    int box_number;
     BinaryTree binsTree;
-    vector<Bin> fullBins;
     int bin_size;
     int id = 1;
 

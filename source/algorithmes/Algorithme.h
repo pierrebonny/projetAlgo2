@@ -13,9 +13,11 @@ private:
     int id = 1;
 protected:
     queue<int> valuesQueue;
+    std::vector<Bin> fullBins;
 public:
     Algorithme(queue<int> valuesQueue);
     virtual void compute() = 0;
+
 };
 
 

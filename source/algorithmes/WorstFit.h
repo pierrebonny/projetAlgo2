@@ -8,23 +8,22 @@
 
 #include "Algorithme.h"
 #include "../utils/BinaryTree.h"
+#include <cmath>
 
 class WorstFit : public Algorithme{
 
 public:
     WorstFit(queue<int> &valuesQueue, int binSize);
     virtual void compute();
-    void compute2();
     void dispResult();
-    void dispResult2();
+    virtual void boxNumber();
+    virtual void averageBoxFilling();
 
 private:
+    int box_number = 0;
     BinaryTree binsTree;
     int bin_size;
     int id;
-    std::vector<Bin> fullBins;
-    std::vector<Bin> binsQueue;
-    Bin& nextFillableBin(int value);
 
 };
 

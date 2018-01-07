@@ -4,6 +4,7 @@
 #include <cstdio>
 #include "BinaryNode.h"
 #include <string>
+#include <vector>
 #include "iostream"
 
 using std::cout;
@@ -18,10 +19,11 @@ public:
     void display();
     BinaryNode* getRoot();
     void deleteNode(int key);
-
+    int somme(int bin_size);
 private:
     BinaryNode* findMax(BinaryNode* node);
     BinaryNode* findMin(BinaryNode* node);
+    int somme(BinaryNode* node,int bin_size);
     void display(BinaryNode* node);
     BinaryNode* getBest(BinaryNode* root, int neededSpace);
     BinaryNode* insert(Bin& bin, BinaryNode* root);
