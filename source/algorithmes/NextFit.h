@@ -13,7 +13,9 @@ public:
     NextFit(const queue<int> &valuesQueue,int binSize);
     void compute();
     void dispResult();
-    double percentageEmpty();
+
+    void boxNumber();
+    void averageBoxFilling();
 private:
     int binSize;
     int id=0;

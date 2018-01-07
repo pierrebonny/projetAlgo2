@@ -8,8 +8,6 @@
 FirstFit::FirstFit(queue<int> &valuesQueue, int size) : Algorithme(valuesQueue), binSize(size),
                                                         sizeMax(valuesQueue.size()), idOrdered() {
     binHeapMin = std::vector<int>(5 * sizeMax, 0);
-    this->binSize = binSize;
-    std::cout << valuesQueue.size() << std::endl;
 }
 
 void FirstFit::compute() {
@@ -71,15 +69,21 @@ int inline FirstFit::min(int a, int b) {
     return (a < b ? binHeapMin.at(a) : binHeapMin.at(b));
 }
 
-double FirstFit::percentageEmpty() {
+
+void FirstFit::boxNumber(){
+    std::cout<<"Il y a "<<idOrdered.size()<<" boites"<<std::endl;
+
+}
+void FirstFit::averageBoxFilling() {
+
     int totalSize = idOrdered.size() * binSize;
     if (totalSize == 0)
-        return 0;
+        return;
     int freeSize = 0;
 
     for (auto f : idOrdered) {
         freeSize += binHeapMin.at(f);
     }
-    return 100.0 * (totalSize - freeSize) / totalSize;
+    std::cout << "Le taux de remplissage moyen est de " << 100.0 * (totalSize - freeSize) / totalSize << "%" << std::endl;
 }
 

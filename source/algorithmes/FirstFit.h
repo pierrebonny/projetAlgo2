@@ -14,7 +14,10 @@ public:
     FirstFit(queue<int> &valuesQueue, int size);
     void compute();
     void dispResult();
-    double percentageEmpty();
+
+    void averageBoxFilling();
+
+    void boxNumber();
 private:
     int sizeMax;
     std::vector<int> binHeapMin;
