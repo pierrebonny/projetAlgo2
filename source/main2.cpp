@@ -8,6 +8,7 @@ using namespace std;
 #include "algorithmes/NextFit.h"
 #include "algorithmes/FirstFit.h"
 #include "algorithmes/WorstFit.h"
+#include "algorithmes/AlmostWorstFirst.h"
 
 int main (int argc, char *argv[]){
     std::queue<int> valuesQueue;
@@ -26,17 +27,31 @@ int main (int argc, char *argv[]){
     BestFit bestFit(valuesQueue,b_size);
     bestFit.compute();
     bestFit.dispResult();
+    bestFit.averageBoxFilling();
+    bestFit.boxNumber();
     cout<<"NEXT FIT"<< endl;
     NextFit nextFit(valuesQueue,b_size);
     nextFit.compute();
     nextFit.dispResult();
+    nextFit.averageBoxFilling();
+    nextFit.boxNumber();
     cout<<"FIRST FIT"<< endl;
     FirstFit firstFit(valuesQueue,b_size);
     firstFit.compute();
     firstFit.dispResult();
+    firstFit.averageBoxFilling();
+    firstFit.boxNumber();
     cout<<"WORST FIT"<< endl;
     WorstFit worstFit(valuesQueue,b_size);
     worstFit.compute();
     worstFit.dispResult();
+    worstFit.averageBoxFilling();
+    worstFit.boxNumber();
+    cout<<"ALMOST WORST FIT"<<endl;
+    AlmostWorstFirst almostWorstFirst(valuesQueue, b_size);
+    almostWorstFirst.compute();
+    almostWorstFirst.dispResult();
+    almostWorstFirst.averageBoxFilling();
+    almostWorstFirst.boxNumber();
     return 0;
 }
