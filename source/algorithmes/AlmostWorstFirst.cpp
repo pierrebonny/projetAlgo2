@@ -10,7 +10,14 @@ void AlmostWorstFirst::compute() {
     while (!valuesQueue.empty()) {
         int value = valuesQueue.front();
         valuesQueue.pop();
-        Bin mostEmptyBin = binsTree.findMax()->getBin();
+        BinaryNode *pNode = binsTree.findMax();
+        if(pNode == nullptr){
+            Bin temp = Bin(bin_size,++id);
+            binsTree.insert(temp);
+            pNode = binsTree.findMax();
+
+        }
+        Bin mostEmptyBin = pNode->getBin();
         if (mostEmptyBin.getAvailableSize() < value) {
             mostEmptyBin = Bin(bin_size, ++id);
             box_number++;
