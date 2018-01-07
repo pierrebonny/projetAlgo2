@@ -13,7 +13,7 @@ FirstFit::FirstFit(queue<int> &valuesQueue, int size) : Algorithme(valuesQueue) 
 }
 
 void FirstFit::compute() {
-    for(int i=0; i < valuesQueue.size();i++ ){
+    while (!valuesQueue.empty()){
         int objet = valuesQueue.front();
         valuesQueue.pop();
         int binId = search(objet);

@@ -14,7 +14,7 @@ NextFit::NextFit(const queue<int> &valuesQueue, int binSize) : Algorithme(values
 
 void NextFit::compute() {
     int position = 0;
-    for (int i = 0; i < valuesQueue.size(); i++) {
+    while (!valuesQueue.empty()){
         int objet = valuesQueue.front();
         valuesQueue.pop();
         if (bins.at(position).getAvailableSize() >= objet)
