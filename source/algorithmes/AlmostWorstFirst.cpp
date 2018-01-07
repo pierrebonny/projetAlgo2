@@ -15,6 +15,7 @@ void AlmostWorstFirst::compute() {
             Bin temp = Bin(bin_size,++id);
             binsTree.insert(temp);
             pNode = binsTree.findMax();
+            box_number++;
 
         }
         Bin mostEmptyBin = pNode->getBin();
