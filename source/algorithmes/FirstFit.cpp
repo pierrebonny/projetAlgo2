@@ -84,6 +84,6 @@ void FirstFit::averageBoxFilling() {
     for (auto f : idOrdered) {
         freeSize += binHeapMin.at(f);
     }
-    std::cout << "Le taux de remplissage moyen est de " << 100.0 * (totalSize - freeSize) / totalSize << "%" << std::endl;
+    std::cout << "Le taux de remplissage moyen est de " << 100.0 * (freeSize) / totalSize << "%" << std::endl;
 }
 

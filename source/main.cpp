@@ -33,10 +33,14 @@ int main (int argc, char *argv[]){
     NextFit nextFit(parser.getQueue(),parser.getBinSize());
     nextFit.compute();
     nextFit.dispResult();
+    nextFit.averageBoxFilling();
+    nextFit.boxNumber();
     cout<<"FIRST FIT"<< endl;
     FirstFit firstFit(parser.getQueue(),parser.getBinSize());
     firstFit.compute();
     firstFit.dispResult();
+    firstFit.averageBoxFilling();
+    firstFit.boxNumber();
     cout<<"WORST FIT"<< endl;
     WorstFit worstFit(parser.getQueue(),parser.getBinSize());
     worstFit.compute();
