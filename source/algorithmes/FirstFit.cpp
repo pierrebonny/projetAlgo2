@@ -66,7 +66,7 @@ int FirstFit::mid(int l, int r) {
 }
 
 int inline FirstFit::min(int a, int b) {
-    return (a < b ? binHeapMin.at(a) : binHeapMin.at(b));
+    return (binHeapMin.at(a) < binHeapMin.at(b) ? binHeapMin.at(a) : binHeapMin.at(b));
 }
 
 
