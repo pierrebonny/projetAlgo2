@@ -14,6 +14,7 @@ public:
     FirstFit(queue<int> &valuesQueue, int size);
     void compute();
     void dispResult();
+    double percentageEmpty();
 private:
     int sizeMax;
     std::vector<int> binHeapMin;

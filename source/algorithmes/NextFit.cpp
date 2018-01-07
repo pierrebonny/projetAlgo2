@@ -28,7 +28,16 @@ void NextFit::compute() {
     }
 }
 
-
+double NextFit::percentageEmpty(){
+        int totalSize = bins.size() * binSize;
+        if(totalSize == 0)
+            return 0;
+        int freeSize = 0;
+        for (Bin bin : bins){
+            freeSize += bin.getAvailableSize();
+        }
+        return (100.0*freeSize)/totalSize;
+}
 void NextFit::dispResult() {
     std::cout<<"Resultat de l'algo Next Fit" << std::endl;
     for (Bin bin : bins){

@@ -13,7 +13,7 @@ public:
     NextFit(const queue<int> &valuesQueue,int binSize);
     void compute();
     void dispResult();
-
+    double percentageEmpty();
 private:
     int binSize;
     int id=0;

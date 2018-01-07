@@ -5,67 +5,81 @@
 #include <iostream>
 #include "FirstFit.h"
 
-FirstFit::FirstFit(queue<int> &valuesQueue, int size) : Algorithme(valuesQueue) , binSize(size)
-        , sizeMax(valuesQueue.size()),idOrdered() {
-    binHeapMin = std::vector<int>(5*sizeMax, 0);
+FirstFit::FirstFit(queue<int> &valuesQueue, int size) : Algorithme(valuesQueue), binSize(size),
+                                                        sizeMax(valuesQueue.size()), idOrdered() {
+    binHeapMin = std::vector<int>(5 * sizeMax, 0);
     this->binSize = binSize;
-    std::cout << valuesQueue.size()<< std::endl;
+    std::cout << valuesQueue.size() << std::endl;
 }
 
 void FirstFit::compute() {
-    while (!valuesQueue.empty()){
+    while (!valuesQueue.empty()) {
         int objet = valuesQueue.front();
         valuesQueue.pop();
         int binId = search(objet);
-        update(binId,objet);
+        update(binId, objet);
     }
 }
+
 void FirstFit::dispResult() {
     int id = 0;
-    for(auto f : idOrdered) {
-        std::cout << "La boite " << (++id)<< " est de taille : " << binSize << " et il reste " << ( binSize - binHeapMin.at(f))<< std::endl;
+    for (auto f : idOrdered) {
+        std::cout << f << "La boite " << (++id) << " est de taille : " << binSize << " et il reste "
+                  << (binSize - binHeapMin.at(f)) << std::endl;
     }
-    std::cout<<std::endl;
+    std::cout << std::endl;
 }
 
 int FirstFit::search(int value) {
-    return search(1,value,1,sizeMax);
+    return search(1, value, 1, sizeMax);
 }
 
 int FirstFit::search(int idx, int val, int left, int right) {
-    if (left == right)
-    {
+    if (left == right) {
         return left;
     }
-    if (binHeapMin.at(2*idx) <= binSize - val) return search(2*idx, val, left, mid(left,right));
-    else return search(2*idx+1, val, (left+right)/2+1, right);
+    if (binHeapMin.at(2 * idx) <= binSize - val) return search(2 * idx, val, left, mid(left, right));
+    else return search(2 * idx + 1, val, (left + right) / 2 + 1, right);
 }
 
 void FirstFit::update(int idBin, int sizeItem) {
-    update(1,idBin,sizeItem,1,sizeMax);
+    update(1, idBin, sizeItem, 1, sizeMax);
 }
 
-void FirstFit::update(int idx, int x,int val, int left, int right) {
-    if (left == right)
-    {
-        binHeapMin.at(idx)+= val;
+void FirstFit::update(int idx, int x, int val, int left, int right) {
+    if (left == right) {
+        binHeapMin.at(idx) += val;
         idOrdered.insert(idx);
         return;
     }
 
-    // check which subtree the x-th bin belongs to and recurse
-    if (x <= mid(left,right)) update(2*idx, x, val, left, mid(left,right));
-    else update(2*idx+1, x, val, mid(left,right)+1, right);
+    if (x <= mid(left, right)) {
+        update(2 * idx, x, val, left, mid(left, right));
+    } else {
+        update(2 * idx + 1, x, val, mid(left, right) + 1, right);
+    }
 
     // store the new minimum fill level of the current (sub)tree
-    binHeapMin.at(idx) = min(2*idx, 2*idx+1);
+    binHeapMin.at(idx) = min(2 * idx, 2 * idx + 1);
 }
 
 int FirstFit::mid(int l, int r) {
-    return (l+r)/2;
+    return (l + r) / 2;
 }
 
 int inline FirstFit::min(int a, int b) {
-    return (a < b ? binHeapMin.at(a) : binHeapMin.at(b) );
+    return (a < b ? binHeapMin.at(a) : binHeapMin.at(b));
+}
+
+double FirstFit::percentageEmpty() {
+    int totalSize = idOrdered.size() * binSize;
+    if (totalSize == 0)
+        return 0;
+    int freeSize = 0;
+
+    for (auto f : idOrdered) {
+        freeSize += binHeapMin.at(f);
+    }
+    return 100.0 * (totalSize - freeSize) / totalSize;
 }
 
