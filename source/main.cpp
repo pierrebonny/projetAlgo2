@@ -27,6 +27,8 @@ int main (int argc, char *argv[]){
     BestFit bestFit(parser.getQueue(),parser.getBinSize());
     bestFit.compute();
     bestFit.dispResult();
+    bestFit.averageBoxFilling();
+    bestFit.boxNumber();
     cout<<"NEXT FIT"<< endl;
     NextFit nextFit(parser.getQueue(),parser.getBinSize());
     nextFit.compute();
@@ -39,21 +41,14 @@ int main (int argc, char *argv[]){
     WorstFit worstFit(parser.getQueue(),parser.getBinSize());
     worstFit.compute();
     worstFit.dispResult();
+    worstFit.averageBoxFilling();
+    worstFit.boxNumber();
     cout<<""<<endl;
     cout<<"ALMOST WORST FIT"<<endl;
     AlmostWorstFirst almostWorstFirst(parser.getQueue(), parser.getBinSize());
     almostWorstFirst.compute();
     almostWorstFirst.dispResult();
-
-    srand(time(0));
-    cout<<"entrez la contenance maximum des boites"<<endl;
-    int b_size;
-    cin>>b_size;
-    cout<<"entrez le nombre de valeurs que vous souhaitez générer"<<endl;
-    int boxNumbers;
-    cin>>boxNumbers;
-    for(int i = 0; i < boxNumbers;i++){
-        valuesQueue.push(rand()%b_size);
-    }
+    almostWorstFirst.averageBoxFilling();
+    almostWorstFirst.boxNumber();
     return 0;
 }

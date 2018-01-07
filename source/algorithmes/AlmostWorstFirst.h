@@ -4,6 +4,7 @@
 
 #include "Algorithme.h"
 #include "../utils/BinaryTree.h"
+#include <cmath>
 
 class AlmostWorstFirst : public Algorithme {
 public:
@@ -11,9 +12,13 @@ public:
     virtual void compute();
     void dispResult();
 
+    virtual void boxNumber();
+    virtual void averageBoxFilling();
+
 
 private:
     BinaryTree binsTree;
+    int box_number = 0;
     int bin_size;
     int id = 1;
 

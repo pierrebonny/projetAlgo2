@@ -17,12 +17,10 @@ BinaryNode *BinaryNode::getRight() {
 }
 
 void BinaryNode::setLeft(BinaryNode* newLeft) {
-    //delete(left);
     left = newLeft;
 }
 
 void BinaryNode::setRight(BinaryNode * newRight) {
-    //delete(right);
     right = newRight;
 }
 
