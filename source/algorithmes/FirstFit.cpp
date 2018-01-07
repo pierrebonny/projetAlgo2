@@ -22,7 +22,7 @@ void FirstFit::compute() {
 void FirstFit::dispResult() {
     int id = 0;
     for (auto f : idOrdered) {
-        std::cout << f << "La boite " << (++id) << " est de taille : " << binSize << " et il reste "
+        std::cout << "La boite " << (++id) << " est de taille : " << binSize << " et il reste "
                   << (binSize - binHeapMin.at(f)) << std::endl;
     }
     std::cout << std::endl;

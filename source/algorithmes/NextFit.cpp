@@ -48,7 +48,6 @@ void NextFit::averageBoxFilling() {
     for (Bin bin : bins){
         freeSize += bin.getAvailableSize();
     }
-    int average =  (100*freeSize)/totalSize;
-    std::cout << "Le taux de remplissage moyen est de " << average << "%" << std::endl;
+    std::cout << "Le taux de remplissage moyen est de " << 100.0*(totalSize-freeSize)/totalSize << "%" << std::endl;
 }
 
