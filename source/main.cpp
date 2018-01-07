@@ -16,7 +16,7 @@ int main (int argc, char *argv[]){
     if(argc > 1){
         filename = argv[1];
     }else{
-        filename  = "exemples/exemple100.txt";
+        filename  = "exemples/exemple20.txt";
     }
     Parser parser;
     if(!parser.readFile(filename)){

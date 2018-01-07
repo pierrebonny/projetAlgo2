@@ -44,6 +44,7 @@ void BestFit::averageBoxFilling() {
     average += binsTree.somme(bin_size);
     average += bin_size*fullBins.size();
     average = floor((average/box_number)*100 + 0.5)/100;
+    average = floor((average/bin_size)*100);
     cout<<"Le taux de remplissage moyen est de "<<average<<"%"<<endl;
 }
 
