@@ -7,7 +7,7 @@
 
 FirstFit::FirstFit(queue<int> &valuesQueue, int size) : Algorithme(valuesQueue), binSize(size),
                                                         sizeMax(valuesQueue.size()), idOrdered() {
-    binHeapMin = std::vector<int>(2 * sizeMax + 1, 0);
+    binHeapMin = std::vector<int>(10* sizeMax  +1, 0);
 }
 
 void FirstFit::compute() {
