@@ -1,7 +1,7 @@
 #include <iostream>
 #include "BestFit.h"
 
-BestFit::BestFit(queue<int> &valuesQueue, int binSize) : Algorithme(valuesQueue) {
+BestFit::BestFit(queue<int> &valuesQueue, int binSize) : Algorithme(valuesQueue),box_number(0) {
     this->bin_size = binSize;
     Bin bin1 = {binSize,1};
     binsTree.insert(bin1);
@@ -42,9 +42,7 @@ void BestFit::compute() {
 void BestFit::averageBoxFilling() {
     double average = 0.;
     average += binsTree.somme(bin_size);
-    for(Bin bin : fullBins){
-        average += bin_size;
-    }
+    average += bin_size*fullBins.size();
     average = floor((average/box_number)*100 + 0.5)/100;
     cout<<"Le taux de remplissage moyen est de "<<average<<"%"<<endl;
 }
